@@ -38,7 +38,7 @@ const Navbar = () => {
                     <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        
+                        Item
                     </Typography>
                     <Button color="inherit">Login</Button>
                 </Toolbar>
