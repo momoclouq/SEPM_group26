@@ -1,22 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Button from '@material-ui/core/Button';
 import Container from "@material-ui/core/Container";
 import {makeStyles} from "@material-ui/core/styles";
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import IntroPanel from "./components/IntroPanel";
+import AdvantagePanel from "./components/AdvantagePanel";
 
 const useStyles = makeStyles((theme) => ({
     main: {
         display: "flex",
         flexDirection: "column",
+        paddingTop: "0px",
         minHeight: "100vh",
-        backgroundColor: "blue",
-        margin: "0"
+        margin: "0",
+        minWidth: "600px"
     },
 }));
+
 
 const Homepage = () => {
     const classes = useStyles();
@@ -26,7 +29,9 @@ const Homepage = () => {
             <main className={classes.main}>
                 <Navbar />
 
-                <Container maxWidth="sm">
+                <Container class={classes.content} maxWidth="lg">
+                    <IntroPanel />
+                    <AdvantagePanel />
                 </Container>
 
                 <Footer />

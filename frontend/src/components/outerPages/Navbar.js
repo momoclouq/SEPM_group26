@@ -16,8 +16,10 @@ import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles((theme) => ({
     root: {
         backgroundColor: "#fff",
+        margin: "0",
     },
     header: {
+        position: "relative",
         backgroundColor: "inherit",
         padding: "0 20px",
         "@media  (max-width: 900px)": {

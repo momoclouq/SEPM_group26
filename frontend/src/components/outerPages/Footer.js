@@ -26,22 +26,19 @@ const Footer = () => {
     const preventDefault = (event) => event.preventDefault();
 
     return (
-        <div className={classes.root}>
-            <CssBaseline />
-            <footer className={classes.footer}>
-                <Container width="100%">
-                    <Grid container
-                        justify="flex-end">
-                        <Grid item>
-                            <Typography className variant="body2">
-                                <Link className={classes.item} href="#" onClick={preventDefault}>Term of Services</Link>
-                                <Link className={classes.item} href="#" onClick={preventDefault}>Privacy</Link>
-                            </Typography>
-                        </Grid>
+        <footer className={classes.footer}>
+            <Container width="100%">
+                <Grid container
+                    justify="flex-end">
+                    <Grid item>
+                        <Typography className variant="body2">
+                            <Link className={classes.item} href="#" onClick={preventDefault}>Term of Services</Link>
+                            <Link className={classes.item} href="#" onClick={preventDefault}>Privacy</Link>
+                        </Typography>
                     </Grid>
-                </Container>
-            </footer>
-        </div>
+                </Grid>
+            </Container>
+        </footer>
     );
 }
 
