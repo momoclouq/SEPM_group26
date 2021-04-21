@@ -38,6 +38,8 @@ const useStyles = makeStyles((theme) => ({
         color: "#835494",
         border: "1px solid black",
         transition: "border 0.25s ease-out",
+        padding: "15px",
+        boxShadow: "1px 2px 1.5px black",
     },
     solutionContent: {
         flexGrow: 1,
@@ -56,7 +58,7 @@ const SolutionPanel = () => {
         return (
             <Grid xs={6} md={3} container item className={classes.solutionPanel} direction="column" justify="flex-start">
                 <Grid className={classes.padItems} item>
-                    <Typography variant="h6">
+                    <Typography variant="h5">
                         {name}
                     </Typography>
                 </Grid>
@@ -68,7 +70,7 @@ const SolutionPanel = () => {
                 </Grid>
 
                 <Grid className={classes.padItems} item>
-                    <Typography variant="body2">
+                    <Typography variant="subtitle1">
                         <Link href="#" onCLick={preventDefault} color="secondary">
                             Learn more
                         </Link>

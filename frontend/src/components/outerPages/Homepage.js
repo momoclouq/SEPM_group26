@@ -9,6 +9,7 @@ import Footer from "./Footer";
 import IntroPanel from "./components/IntroPanel";
 import AdvantagePanel from "./components/AdvantagePanel";
 import SolutionPanel from "./components/SolutionPanel";
+import TokenPanel from "./components/TokenPanel";
 
 const useStyles = makeStyles((theme) => ({
     main: {
@@ -34,6 +35,7 @@ const Homepage = () => {
                     <IntroPanel />
                     <AdvantagePanel />
                     <SolutionPanel />
+                    <TokenPanel />
                 </Container>
 
                 <Footer />
