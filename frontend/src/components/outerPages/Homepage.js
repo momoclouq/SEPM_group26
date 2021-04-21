@@ -8,6 +8,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import IntroPanel from "./components/IntroPanel";
 import AdvantagePanel from "./components/AdvantagePanel";
+import SolutionPanel from "./components/SolutionPanel";
 
 const useStyles = makeStyles((theme) => ({
     main: {
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: "0px",
         minHeight: "100vh",
         margin: "0",
-        minWidth: "600px"
+        minWidth: "650px"
     },
 }));
 
@@ -32,6 +33,7 @@ const Homepage = () => {
                 <Container class={classes.content} maxWidth="lg">
                     <IntroPanel />
                     <AdvantagePanel />
+                    <SolutionPanel />
                 </Container>
 
                 <Footer />

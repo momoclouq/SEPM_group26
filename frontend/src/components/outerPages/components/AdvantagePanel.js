@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
         },
         background: "#121212",
         borderRadius: "5px",
-        height: "25vh",
+        minHeight: "25vh",
         padding: "10px",
         color: "#eedff0"
     },
@@ -36,10 +36,13 @@ const useStyles = makeStyles((theme) => ({
         height: "100vh",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center"
+        justifyContent: "center",
     },
     specialBoard: {
         justifyContent: "space-around",
+    },
+    advantageContentText: {
+        padding: "1em",
     }
 }));
 
@@ -48,7 +51,7 @@ const AdvantagePanel = () => {
     
     const AdvantageText = ({ text }) => {
         return (
-            <Grid container item className={classes.advantagePanel} direction="row" justify="flex-start" spacing={1}>
+            <Grid container item className={classes.advantagePanel} direction="row" justify="flex-start">
                 <Grid item>
                     <BubbleChartIcon style={{ color: "#7377fa" }}/>
                 </Grid>
@@ -60,7 +63,7 @@ const AdvantagePanel = () => {
                 </Grid>
 
                 <Grid item>
-                    <Typography variant="body1">
+                    <Typography className={classes.advantageContentText} variant="body1">
                         Some details about the advantages of the Trainee system, which is non-existent, some more text for testing
                     </Typography>
                 </Grid>
