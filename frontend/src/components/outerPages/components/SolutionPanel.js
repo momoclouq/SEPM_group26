@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     solutionPanel: {
         "&:hover": {
             border: "7px solid #e8daf5",
+            boxShadow: "none",
         },
         background: "#fff",
         borderRadius: "5px",

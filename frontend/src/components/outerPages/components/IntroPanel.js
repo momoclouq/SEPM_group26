@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-import ads1 from "../../../media/advertisement.jpg";
+import ads1 from "../../../media/machine-learning.svg";
 
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";

@@ -18,11 +18,11 @@ const useStyles = makeStyles((theme) => ({
     },
     token: {
         color: "#7209B7",
-        backgroundColor: "whihte",
+        backgroundColor: "white",
     },
     tokenTitle: {
-        backgroundColor: "#000000",
-        color: "inherit",
+        backgroundColor: "#7209B7",
+        color: "white",
         padding: "20px",
         textAlign: "center",
     },
@@ -32,14 +32,15 @@ const useStyles = makeStyles((theme) => ({
     },
     tokenPanel: {
         "&:hover": {
-
+            boxShadow: "0px 1px 1px black"
         },
         background: "#fff",
         borderRadius: "5px",
         height: "100%",
         color: "#835494",
         border: "1px solid black",
-        margin: "20px"
+        margin: "20px",
+        transition: "box-shadow 0.25s ease"
     },
     tokenContent: {
         textAlign: "center",

@@ -20,7 +20,10 @@ const useStyles = makeStyles((theme) => ({
     },
     advantageText: {
         color: "white",
-        padding: "15px 5px"
+        padding: "15px 10px"
+    },
+    advantageTextTitle: {
+        paddingLeft: "30px"
     },
     advantagePanel: {
         "&:hover": {
@@ -51,12 +54,12 @@ const AdvantagePanel = () => {
     
     const AdvantageText = ({ text }) => {
         return (
-            <Grid container item className={classes.advantagePanel} direction="row" justify="flex-start">
+            <Grid container item className={classes.advantagePanel} direction="row" justify="flex-start" spacing={1}>
                 <Grid item>
                     <BubbleChartIcon style={{ color: "#7377fa" }}/>
                 </Grid>
                 
-                <Grid item >
+                <Grid item>
                     <Typography variant="body1">
                         {text}
                     </Typography>
@@ -79,7 +82,7 @@ const AdvantagePanel = () => {
                 <AdvantageText text="Advantage number 3" />
             </Grid>
             <Grid className={classes.introBoard} item xs={6}>
-                <Typography className={classes.advantageText} variant="h3" align="right">
+                <Typography className={clsx(classes.advantageText, classes.advantageTextTitle)} variant="h3" align="right">
                     What is Trainee
                 </Typography>
                 <Typography className={classes.advantageText} variant="body1" align="right">
