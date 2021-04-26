@@ -7,7 +7,7 @@ import Tos from "./components/outerPages/Tos";
 function App() {
   return (
     <Router>
-      <Tos />
+      <Homepage />
     </Router>
   );
 }
