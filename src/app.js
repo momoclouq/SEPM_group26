@@ -10,7 +10,7 @@ import Price from "./page/project";
 function App() {
   return (
     <Route exact path="/login">
-      <Login />
+      <Price />
     </Route>
   );
 }
