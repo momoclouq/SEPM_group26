@@ -1,0 +1,70 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: white;
+  color: #222;
+}
+
+.container {
+  position: absolute;
+  left: 30%;
+  top: 20%;
+  background: whitesmoke;
+  min-height: 300px;
+  width: 800px;
+  border: solid;
+  border-radius: 5px;
+  padding: 30px 40px 20px 40px;
+}
+.container .container_1:after {
+  display: table;
+  clear: both;
+}
+.container .container_2 > h1 {
+  float: left;
+  text-align: left;
+}
+.container .container_2 > h2 {
+  float: right;
+  text-align: right;
+  padding: 10px 0 10px 0;
+  color: purple;
+}
+.container_1 .con_1 {
+  padding-top: 10px;
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+.container_1 .con_1 > label {
+  display: block;
+  padding: 5px;
+}
+.container_1 .con_2 {
+  width: 50%;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.container_1 .con_2 > input {
+  width: 100%;
+  margin: 8px;
+  border: 2px solid purple;
+  border-radius: 4px;
+}
+
+.container > button {
+  display: inline-block;
+  margin: 40px 30px 0 0;
+  display: inline;
+  padding: 10px 30px;
+  color: aliceblue;
+  background-color: rebeccapurple;
+} */
