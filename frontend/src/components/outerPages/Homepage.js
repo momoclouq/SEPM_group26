@@ -31,7 +31,7 @@ const Homepage = () => {
             <main className={classes.main}>
                 <Navbar />
 
-                <Container class={classes.content} maxWidth="lg">
+                <Container className={classes.content} maxWidth="lg">
                     <IntroPanel />
                     <AdvantagePanel />
                     <SolutionPanel />
