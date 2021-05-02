@@ -4,13 +4,13 @@ import Register from "./page/register.js";
 import Login from "./page/login.js";
 import Projects from "./page/project";
 import { Route, link } from "react-router-dom";
-import Price from "./page/project";
+import Why from "./page/why";
 
 // just index
 function App() {
   return (
     <Route exact path="/login">
-      <Price />
+      <Why />
     </Route>
   );
 }
