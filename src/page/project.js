@@ -1,122 +1,152 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import { Grid } from "@material-ui/core";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import Box from "@material-ui/core/Box";
-const useStyles = makeStyles((theme) => ({
-  root: { minWidth: "200px", width: "300px", maxWidth: "350px" },
-  title: {
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+
+import {
+  Card,
+  Container,
+  Avatar,
+  TextField,
+  Link,
+  withStyles,
+  Typography,
+  Box,
+  Button,
+  Divider,
+} from "@material-ui/core";
+import { Description } from "@material-ui/icons";
+import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
+
+const packs = [
+  {
+    name: "Basic",
+    color: "#aa2ee6",
+    line1: "this is line 1",
+    line2: "this is line 2",
+    line3: "this is line 3",
+    coins: "1",
+    cost: "1 month",
+  },
+  {
+    name: "Advance",
+    color: "#ff79cd",
+    line1: "this is line 1",
+    line2: "this is line 2",
+    line3: "this is line 3",
+    coins: "3",
+    cost: "3 months",
+  },
+  {
+    name: "prenium",
+    color: "#ffdf6b",
+    line1: "this is line 1",
+    line2: "this is line 2",
+    line3: "this is line 3",
+    coins: "5",
+    cost: "6 months",
+  },
+];
+const PackCard = withStyles({
+  root: {
+    minWidth: "200px",
+    maxWidth: "300px",
+    width: "100%",
+    maxWidth: "350px",
+    height: "content-fit",
     textAlign: "center",
-    borderRadius: "10px",
-    fontSize: "24px",
-    fontWeight: "bold",
-    backgroundColor: "purple",
-    color: "white",
     padding: "10px",
-    margin: "auto",
-    marginBottom: "10px",
-    width: "50%",
+    backgroundColor: "inherit",
+    position: "absolute",
   },
-  content: {
-    textAlign: "left",
-    margin: "auto",
-    width: "70%",
+})(Card);
+const BuyButton = withStyles({
+  root: {
+    margin: "20px",
+    backgroundColor: "inherit",
+    borderRadius: "0",
+    border: "white solid",
+    color: "white",
+    "&:hover": {
+      backgroundColor: "inherit",
+    },
   },
-  content_item: {
-    marginBottom: "15px",
+})(Button);
+const useStyles = makeStyles((theme) => ({
+  root: {},
+  image: {
+    margin: "0",
+    height: "30%",
   },
-  btn: {
-    marginTop: "20px",
-  },
+  title: { color: "white" },
 }));
 
-const Price = () => {
+const Des = (packs) => {
+  const { name, color, line1, line2, line3, coins, cost } = packs.pack;
   const classes = useStyles();
 
   return (
+    <Grid item lg={4} color>
+      <div style={{ backgroundColor: color }}>
+        <PackCard>
+          <div className={classes.image}>
+            <div style={{ fontSize: "40px", paddingTop: "20px" }}>
+              {coins} X{" "}
+              <RadioButtonUncheckedIcon fontSize="inherit"></RadioButtonUncheckedIcon>
+              <Box pb={2}>
+                <Typography variant="h2">{cost}</Typography>
+              </Box>
+            </div>
+          </div>
+          <Divider></Divider>
+          <Box m={1} pt={2}>
+            <Typography variant="h4" color="inherit" className={classes.title}>
+              {name}
+            </Typography>
+            <Typography
+              variant="subtitle2"
+              color="inherit"
+              className={classes.title}
+            >
+              {line1}
+            </Typography>
+            <Typography
+              variant="subtitle2"
+              color="inherit"
+              className={classes.title}
+            >
+              {line2}
+            </Typography>
+            <Typography
+              variant="subtitle2"
+              color="inherit"
+              className={classes.title}
+            >
+              {line3}
+            </Typography>
+
+            <BuyButton variant="contained">Buy Now</BuyButton>
+          </Box>
+        </PackCard>
+      </div>
+    </Grid>
+  );
+};
+
+const Option = () => {
+  const classes = useStyles();
+  // variable
+
+  return (
     <Container>
-      <Grid container spacing={4}>
-        <Grid item xs={4}>
-          <Card className={classes.root}>
-            <CardContent>
-              <div className={classes.title}>Basic Bundle</div>
-              <Divider></Divider>
-              <div className={classes.content}>
-                <p className={classes.content_item}>* limited Storage</p>
-                <p className={classes.content_item}>* Slower Training Time</p>
-                <p className={classes.content_item}>* Less Available Option</p>
-              </div>
-              <Divider></Divider>
-              <Box textAlign="center">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  href="#contained-buttons"
-                  className={classes.btn}
-                >
-                  5 Tokens / month
-                </Button>
-              </Box>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={4}>
-          <Card className={classes.root}>
-            <CardContent>
-              <div className={classes.title}>Basic Bundle</div>
-              <Divider></Divider>
-              <div className={classes.content}>
-                <p className={classes.content_item}>* limited Storage</p>
-                <p className={classes.content_item}>* Slower Training Time</p>
-                <p className={classes.content_item}>* Less Available Option</p>
-              </div>
-              <Divider></Divider>
-              <Box textAlign="center">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  href="#contained-buttons"
-                  className={classes.btn}
-                >
-                  5 Tokens / month
-                </Button>
-              </Box>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={4}>
-          <Card className={classes.root}>
-            <CardContent>
-              <div className={classes.title}>Basic Bundle</div>
-              <Divider></Divider>
-              <div className={classes.content}>
-                <p className={classes.content_item}>* limited Storage</p>
-                <p className={classes.content_item}>* Slower Training Time</p>
-                <p className={classes.content_item}>* Less Available Option</p>
-              </div>
-              <Divider></Divider>
-              <Box textAlign="center">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  href="#contained-buttons"
-                  className={classes.btn}
-                >
-                  5 Tokens / month
-                </Button>
-              </Box>
-            </CardContent>
-          </Card>
-        </Grid>
+      <Grid container spacing={6}>
+        {packs.map((pack, i) => {
+          const { name, color, line1, line2, line3, coins, cost } = pack;
+          return <Des pack={pack}></Des>;
+        })}
       </Grid>
     </Container>
   );
 };
 
-export default Price;
+export default Option;
