@@ -29,16 +29,12 @@ const Homepage = () => {
     return (
         <React.Fragment>
             <main className={classes.main}>
-                <Navbar />
-
                 <Container className={classes.content} maxWidth="lg">
                     <IntroPanel />
                     <AdvantagePanel />
                     <SolutionPanel />
                     <TokenPanel />
                 </Container>
-
-                <Footer />
             </main>
         </React.Fragment>
     );

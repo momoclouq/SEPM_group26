@@ -7,7 +7,7 @@ import { Typography } from "@material-ui/core";
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import content from "./TosContent";
+import content from "./components/TosContent";
 
 const useStyle = makeStyles((theme) => ({
     para: {
@@ -32,8 +32,6 @@ const Tos = () => {
 
     return (
         <React.Fragment>
-            <Navbar />
-
             <Container maxWidth="lg">
                 <Typography variant="h1">
                     {tosContent.title}
@@ -115,8 +113,6 @@ const Tos = () => {
                     {divWrapper(tosContent.contactContent)}
                 </Typography>
             </Container>
-
-            <Footer />
         </React.Fragment>
     );
 };

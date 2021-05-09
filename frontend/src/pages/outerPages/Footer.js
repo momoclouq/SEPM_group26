@@ -8,6 +8,8 @@ import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import { findByLabelText } from "@testing-library/dom";
 
+import {Link as RouterLink} from "react-router-dom";
+
 const useStyles = makeStyles((theme) => ({
     footer: {
         padding: theme.spacing(1,2),
@@ -32,8 +34,7 @@ const Footer = () => {
                     justify="flex-end">
                     <Grid item>
                         <Typography className variant="body2">
-                            <Link className={classes.item} href="#" onClick={preventDefault}>Term of Services</Link>
-                            <Link className={classes.item} href="#" onClick={preventDefault}>Privacy</Link>
+                            <Link component={RouterLink} className={classes.item} to="/term_of_service" onClick={preventDefault}>Term of Services/ Privacy</Link>
                         </Typography>
                     </Grid>
                 </Grid>

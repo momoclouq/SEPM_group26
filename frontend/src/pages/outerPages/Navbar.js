@@ -12,6 +12,8 @@ import Drawer from "@material-ui/core/Drawer";
 import MenuItem from "@material-ui/core/MenuItem";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -47,6 +49,9 @@ const useStyles = makeStyles((theme) => ({
     },
     mobileBar: {
         color: "inherit"
+    },
+    logoLink: {
+        textDecoration: "none"
     }
 }));
 
@@ -54,24 +59,28 @@ const Navbar = () => {
     const classes = useStyles();
     const headersData = [
         {
-            label: "link1",
-            href: "#"
+            label: "Getting Started",
+            href: "/start",
         },
         {
-            label: "link2",
-            href: "#"
+            label: "Why",
+            href: "/why"
         },
         {
-            label: "link3",
-            href: "#"
+            label: "Solutions",
+            href: "/solutions"
         },
         {
-            label: "link4",
-            href: "#"
+            label: "Token System",
+            href: "/token"
+        },
+        {
+            label: "Log in",
+            href: "/login"
         },
     ];
 
-    const femmecubatorLogo = "Logo";
+    const TraineeLogo = "Trainee";
 
     const [state, setState] = useState({
         mobileView: false,
@@ -90,6 +99,29 @@ const Navbar = () => {
         setResponsiveness();
         window.addEventListener("resize", () => setResponsiveness());
     }, []);
+
+    //components
+    const PurpleText = withStyles({
+        root: {
+          color: "#890596",
+          fontStyle: "normal",
+        },
+    })(Typography);
+
+    const indexLink = (
+        <Link
+                    {...{
+                      component: RouterLink,
+                      to: "/",
+                      color: "inherit",
+                      style: { textDecoration: "none" },
+                    }}
+                  >
+                    <PurpleText variant="h6">
+                            {TraineeLogo}
+                    </PurpleText>
+                  </Link>
+    );
 
     const displayMobile = () => {
         const handleDrawerOpen = () => {
@@ -141,7 +173,8 @@ const Navbar = () => {
                     }>
                         <div className={classes.drawerContainer}>{getDrawerChoices()}</div>
                     </Drawer>
-                    <div className={classes.logo}>{femmecubatorLogo}</div>
+
+                    {indexLink}
             </Toolbar>
         );
     };
@@ -169,7 +202,7 @@ const Navbar = () => {
 
         return (
             <Toolbar className={classes.container}>
-                <div className={classes.logo}>{femmecubatorLogo}</div>
+                {indexLink}
 
                 <Grid className={classes.itemBar} container spacing={1}>
                     {getGridChoices()}

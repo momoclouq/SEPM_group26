@@ -44,8 +44,6 @@ const GettingStarted = () => {
     return (
         <React.Fragment>
             <main className={classes.main}>
-                <Navbar />
-
                 <Container className={classes.content} maxWidth="lg">
                     <Box className={classes.introPanel}>
                         <Typography variant="h2">
@@ -103,8 +101,6 @@ const GettingStarted = () => {
                         </Grid>
                     </Grid>
                 </Container>
-
-                <Footer />
             </main>
         </React.Fragment>
     );

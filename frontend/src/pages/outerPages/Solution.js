@@ -112,8 +112,6 @@ const Solution = () => {
     return (
         <React.Fragment>
             <main className={classes.main}>
-                <Navbar />
-
                 <Container className={classes.content} maxWidth="lg">
                     <Box className={classes.introPanel}>
                         <Typography variant="h2">
@@ -215,7 +213,6 @@ const Solution = () => {
                         {listOfAllAlgo()}
                     </Box>
                 </Container>
-                <Footer />
             </main>
         </React.Fragment>
     );
