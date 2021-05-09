@@ -9,8 +9,8 @@ import Why from "./page/why";
 // just index
 function App() {
   return (
-    <Route exact path="/login">
-      <Why />
+    <Route exact path="/login1">
+      <Register></Register>
     </Route>
   );
 }

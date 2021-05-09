@@ -14,8 +14,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper: {
-    height: 350,
-    width: 400,
+    height: 300,
+    width: 350,
+    padding: theme.spacing(2),
+    textAlign: "center",
   },
   box: {
     height: "100px",
@@ -25,42 +27,66 @@ const useStyles = makeStyles((theme) => ({
     padding: "20px 30px 10px 30px",
   },
 }));
+const content = [
+  {
+    id: "01",
+    title: "ML Services",
+    content: "Build, train and deploy machine learning models fast",
+    button: "Read More",
+  },
+  {
+    id: "02",
+    title: "ML Infrastructure",
+    content: "High performance, cost-effective, fast transaction",
+    button: "Read More",
+  },
+  {
+    id: "03",
+    title: "Deep Learning Frameworks",
+    content: "Choice and flexibility with the broadest framework support",
+    button: "Read More",
+  },
+];
 
-const Con = () => {
+const Con = (props) => {
   const classes = useStyles();
+  const { id, title, content, button } = props.prop;
+
   return (
     <Grid item xs={4}>
-      <Paper className={classes.paper}>
-        <div className={classes.iconCon}>
-          <FileCopyIcon fontSize="large" color="primary"></FileCopyIcon>
-        </div>
-        <Box pl={4}>
-          <Typography variant="subtitle1" color="secondary">
-            {" "}
-            01
-          </Typography>
-        </Box>
-        <Box pt={1} pb={1} pl={4}>
-          <Typography variant="h5" pb={2}>
-            {" "}
-            Reason 1
-          </Typography>
-          <Box pt={1}>
-            <Typography variant="subtitle2">
-              {" "}
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remainin{" "}
-            </Typography>
-            <Button variant="outlined" color="primary" href="#outlined-buttons">
-              Link
-            </Button>
-          </Box>
-        </Box>
-      </Paper>
+      <Grid Container spacing={0}>
+        <Paper className={classes.paper}>
+          <Grid item xs={2}>
+            <div className={classes.iconCon}>
+              <FileCopyIcon fontSize="large" color="primary"></FileCopyIcon>
+            </div>
+            <Box pl={4}>
+              <Typography variant="subtitle1" color="secondary">
+                {id}
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={10}>
+            <Box pt={1} pb={1} pl={4}>
+              <Typography variant="h5" pb={2} align={"center"}>
+                {title}
+              </Typography>
+              <Box pt={1}>
+                <Typography variant="subtitle2">{content}</Typography>
+              </Box>
+              <Box pt={1} align={"center"}>
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  href="#outlined-buttons"
+                >
+                  {button}
+                </Button>
+              </Box>
+            </Box>
+          </Grid>
+        </Paper>
+      </Grid>
     </Grid>
   );
 };
@@ -87,9 +113,10 @@ export default function Why() {
         </Box>
       </Container>
       <Grid className={classes.root} container spacing={0}>
-        <Con></Con>
-        <Con></Con>
-        <Con></Con>
+        {content.map((prop) => {
+          const { id, title, content, button } = prop;
+          return <Con prop={prop}></Con>;
+        })}
       </Grid>
       <Container></Container>
     </Container>
