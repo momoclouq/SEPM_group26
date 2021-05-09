@@ -30,8 +30,13 @@ const LoginButton = withStyles({
     borderColor: "#890596",
   },
 })(Button);
+
 const useStyles = makeStyles((theme) => ({
-  root: { flexGrow: 1 },
+  root: { 
+    background: "linear-gradient(to right,#9733ee,#da22ff)",
+    minHeight: "100%",
+    border: "1px solid black"
+  },
   card: {
     padding: "30px",
     height: "60vh",
@@ -39,23 +44,14 @@ const useStyles = makeStyles((theme) => ({
     margin: "150px auto",
   },
   box: {
-    marin: "30px ",
-  },
-  body: {
-    background: "linear-gradient(to right,#9733ee,#da22ff)",
-    height: "100%",
-    width: "100%",
-    boxSizing: "border-box",
-    margin: "0",
-    padding: "0",
-    position: "absolute",
+    margin: "30px ",
   },
 }));
+
 const Login = () => {
   const classes = useStyles();
   return (
-    <div className={classes.body}>
-      <Grid className={classes.root}>
+      <Box className={classes.root}>
         <Card elevation={10} className={classes.card}>
           <Box align="center">
             <PurpleTypography variant="h5" className={classes.color}>
@@ -99,8 +95,7 @@ const Login = () => {
             />
           </Box>
         </Card>
-      </Grid>
-    </div>
+      </Box>
   );
 };
 

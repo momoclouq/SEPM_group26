@@ -13,7 +13,6 @@ import {Link as RouterLink} from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
     footer: {
         padding: theme.spacing(1,2),
-        marginTop: "auto",
         backgroundColor:
             theme.palette.type === "light" ? theme.palette.grey[200] : theme.palette.grey[800],
     },
@@ -25,20 +24,17 @@ const useStyles = makeStyles((theme) => ({
 
 const Footer = () => {
     const classes = useStyles();
-    const preventDefault = (event) => event.preventDefault();
 
     return (
         <footer className={classes.footer}>
-            <Container width="100%">
-                <Grid container
-                    justify="flex-end">
-                    <Grid item>
-                        <Typography className variant="body2">
-                            <Link component={RouterLink} className={classes.item} to="/term_of_service" onClick={preventDefault}>Term of Services/ Privacy</Link>
-                        </Typography>
-                    </Grid>
+            <Grid container
+                justify="flex-end">
+                <Grid item>
+                    <Typography className variant="body2">
+                        <Link component={RouterLink} className={classes.item} to="/term_of_service">Term of Services/ Privacy</Link>
+                    </Typography>
                 </Grid>
-            </Container>
+            </Grid>
         </footer>
     );
 }

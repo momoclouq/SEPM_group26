@@ -7,6 +7,9 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import {makeStyles} from "@material-ui/core/styles";
 import { Button, CardMedia, Typography } from "@material-ui/core";
+import Link from "@material-ui/core/Link";
+
+import {Link as RouterLink} from "react-router-dom";
 
 let useStyles = makeStyles((theme) => ({
     panel: {
@@ -43,6 +46,9 @@ let useStyles = makeStyles((theme) => ({
         },
         background: "#7209B7",
         color: "white"
+    },
+    link: {
+        textDecoration: "none"
     }
 }));
 
@@ -58,9 +64,11 @@ const IntroPanel = () => {
                 <Typography className={classes.item} component="p">
                     Create your model with speed, accuracy and precision
                 </Typography>
-                <Button className={classes.getStartedBtn} variant="contained" m={2}>
-                    Get Started
-                </Button>
+                <Link className={classes.link} component={RouterLink} to="/start">
+                    <Button className={classes.getStartedBtn} variant="contained" m={2}>
+                        Get Started
+                    </Button>
+                </Link>
             </Grid>
             <Grid className={classes.introBoard} item xs={6}>
                 <CardMedia

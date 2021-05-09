@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
         margin: "0",
     },
     header: {
-        position: "relative",
         backgroundColor: "inherit",
         padding: "0 20px",
         "@media  (max-width: 900px)": {
@@ -30,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
         color: "#7209B7",
     },
     drawerContainer: {
-        padding:"20px 30px",
         fontWeight: "400",
         color: "inherit",
     },
@@ -123,6 +121,14 @@ const Navbar = () => {
                   </Link>
     );
 
+    const DrawerItem = withStyles({
+        root: {
+            color: "#890596",
+            padding: "20px 30px",
+            textAlign: "center",
+        }
+    })(MenuItem);
+
     const displayMobile = () => {
         const handleDrawerOpen = () => {
             setState((prevState) => ({ ...prevState, drawerOpen: true }));
@@ -144,7 +150,7 @@ const Navbar = () => {
                     key: label,
                   }}
                 >
-                  <MenuItem>{label}</MenuItem>
+                  <DrawerItem>{label}</DrawerItem>
                 </Link>
               );
             });
@@ -171,7 +177,7 @@ const Navbar = () => {
                             onClose: handleDrawerClose,
                         }
                     }>
-                        <div className={classes.drawerContainer}>{getDrawerChoices()}</div>
+                        <div className={classes.drawerContainer} onClick={handleDrawerClose}>{getDrawerChoices()}</div>
                     </Drawer>
 
                     {indexLink}
@@ -193,7 +199,7 @@ const Navbar = () => {
                       key: label,
                     }}
                   >
-                    <MenuItem>{label}</MenuItem>
+                    <DrawerItem>{label}</DrawerItem>
                   </Link>
                 </Grid>
                 );
