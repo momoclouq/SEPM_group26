@@ -46,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
     },
     solutionContent: {
         marginTop: "20px",
-        padding: "20px",
         background: "#890596", /* fallback for old browsers */
         background: "-webkit-linear-gradient(to right, #890596, #2f0743)", /* Chrome 10-25, Safari 5.1-6 */
         background: "linear-gradient(to right, #890596, #2f0743)", 
@@ -100,51 +99,58 @@ const useStyles = makeStyles((theme) => ({
     cardContent: {
         minHeight: "80px",
         maxHeight: "80px"
-    }
+    },
+    cardSolutionTitle: {
+        color: "#890596"
+    },
 }));
 
 const algoData = [
-    {
-        title: "algo 1 cate 1",
-        introduction: "This is an algorithm suitable for x model creation",
-        content: "content about algorithm, please content Phat for more infomation, content about algorithm, please content Phat for more infomation,content about algorithm, please content Phat for more infomation,",
-    },
-    {
-        title: "algo 2 cate 1",
-        introduction: "This is an algorithm suitable for x model creation",
-        content: "content about algorithm, please content Phat for more infomation, content about algorithm, please content Phat for more infomation,content about algorithm, please content Phat for more infomation,",
-    },
-    {
-        title: "algo 3 cate 1",
-        introduction: "This is an algorithm suitable for x model creation",
-        content: "content about algorithm, please content Phat for more infomation, content about algorithm, please content Phat for more infomation,content about algorithm, please content Phat for more infomation,",
-    },
-    {
-        title: "algo 4 cate 1",
-        introduction: "This is an algorithm suitable for x model creation",
-        content: "content about algorithm, please content Phat for more infomation, content about algorithm, please content Phat for more infomation,content about algorithm, please content Phat for more infomation,",
-    },
-    {
-        title: "algo 1 cate 2",
-        introduction: "This is an algorithm suitable for x model creation",
-        content: "content about algorithm, please content Phat for more infomation, content about algorithm, please content Phat for more infomation,content about algorithm, please content Phat for more infomation,",
-    },
-    {
-        title: "algo 2 cate 2",
-        introduction: "This is an algorithm suitable for x model creation",
-        content: "content about algorithm, please content Phat for more infomation, content about algorithm, please content Phat for more infomation,content about algorithm, please content Phat for more infomation,",
-    },
-    {
-        title: "algo 3 cate 2",
-        introduction: "This is an algorithm suitable for x model creation",
-        content: "content about algorithm, please content Phat for more infomation, content about algorithm, please content Phat for more infomation,content about algorithm, please content Phat for more infomation,",
-    },
-    {
-        title: "algo 4 cate 2",
-        introduction: "This is an algorithm suitable for x model creation",
-        content: "content about algorithm, please content Phat for more infomation, content about algorithm, please content Phat for more infomation,content about algorithm, please content Phat for more infomation,",
-    },
-]
+    [
+        {
+            title: "algo 1 cate 1",
+            introduction: "This is an algorithm suitable for x model creation",
+            content: "content about algorithm, please content Phat for more infomation, content about algorithm, please content Phat for more infomation,content about algorithm, please content Phat for more infomation,",
+        },
+        {
+            title: "algo 2 cate 1",
+            introduction: "This is an algorithm suitable for x model creation",
+            content: "content about algorithm, please content Phat for more infomation, content about algorithm, please content Phat for more infomation,content about algorithm, please content Phat for more infomation,",
+        },
+        {
+            title: "algo 3 cate 1",
+            introduction: "This is an algorithm suitable for x model creation",
+            content: "content about algorithm, please content Phat for more infomation, content about algorithm, please content Phat for more infomation,content about algorithm, please content Phat for more infomation,",
+        },
+        {
+            title: "algo 4 cate 1",
+            introduction: "This is an algorithm suitable for x model creation",
+            content: "content about algorithm, please content Phat for more infomation, content about algorithm, please content Phat for more infomation,content about algorithm, please content Phat for more infomation,",
+        },
+    ],
+    [
+        {
+            title: "algo 1 cate 2",
+            introduction: "This is an algorithm suitable for x model creation",
+            content: "content about algorithm, please content Phat for more infomation, content about algorithm, please content Phat for more infomation,content about algorithm, please content Phat for more infomation,",
+        },
+        {
+            title: "algo 2 cate 2",
+            introduction: "This is an algorithm suitable for x model creation",
+            content: "content about algorithm, please content Phat for more infomation, content about algorithm, please content Phat for more infomation,content about algorithm, please content Phat for more infomation,",
+        },
+        {
+            title: "algo 3 cate 2",
+            introduction: "This is an algorithm suitable for x model creation",
+            content: "content about algorithm, please content Phat for more infomation, content about algorithm, please content Phat for more infomation,content about algorithm, please content Phat for more infomation,",
+        },
+        {
+            title: "algo 4 cate 2",
+            introduction: "This is an algorithm suitable for x model creation",
+            content: "content about algorithm, please content Phat for more infomation, content about algorithm, please content Phat for more infomation,content about algorithm, please content Phat for more infomation,",
+        },
+    ]
+];
 
 const Solution = () => {
     const classes = useStyles();
@@ -168,9 +174,9 @@ const Solution = () => {
         executeScroll();
     }
 
-    const listOfAlgo = (index, title, subheader, algoDesc ) => {
+    const listOfAlgo = (cate, title, subheader, algoDesc ) => {
         let handleFunc;
-        if (index == 0) handleFunc = handleExpandClickOne;
+        if (cate == 0) handleFunc = handleExpandClickOne;
         else handleFunc = handleExpandClickTwo;
 
         return (
@@ -184,47 +190,55 @@ const Solution = () => {
                 <CardActions disableSpacing className={classes.actionPanel}>
                     <IconButton
                         className={clsx(classes.expand, {
-                            [classes.expandOpen]: expanded[index],
+                            [classes.expandOpen]: expanded[cate],
                         })}
                         onClick={handleFunc}
-                        aria-expanded={expanded[index]}
+                        aria-expanded={expanded[cate]}
                         aria-label="show more"
                         >
                             <ExpandMoreIcon />
                     </IconButton>
                 </CardActions>
-                <Collapse in={expanded[index]} timeout="auto" unmountOnExit>
+                <Collapse in={expanded[cate]} timeout="auto" unmountOnExit>
                     <List component="nav" aria-label="main mailbox folders"> 
-                        <ListItem button onClick={() => changeCard(0, 0)}>
-                            <ListItemText primary={`Algo 1 cate ${index+1}`} />
-                        </ListItem> 
-                        <ListItem button onClick={() => changeCard(1, 0)}>
-                            <ListItemText primary={`Algo 2 cate ${index+1}`} />
-                        </ListItem>
-                        <ListItem button onClick={() => changeCard(2, 0)}>
-                            <ListItemText primary={`Algo 3 cate ${index+1}`} />
-                        </ListItem> 
-                        <ListItem button onClick={() => changeCard(3, 0)}>
-                            <ListItemText primary={`Algo 4 cate ${index+1}`} />
-                        </ListItem>
+                        {
+                            algoData[cate].map((algo, index) => {
+                                return (
+                                    <ListItem button onClick={() => changeCard(cate, index)} key={algo.title}>
+                                        <ListItemText primary={`Algo ${index + 1} category ${cate + 1}`} />
+                                    </ListItem> 
+                                );
+                            })
+                        }
                     </List>
                 </Collapse>
             </Card>
         );
     }
 
-    const algoCard = (index, cate) => {
+    const algoCard = (cate, index) => {
+        const cardSolutionTitle = (content) => (
+            <Typography variant="h5" className={classes.cardSolutionTitle}>
+                {content}
+            </Typography>
+        );
+
+        const cardSolutionSubTitle = (content) => (
+            <Typography variant="subtitle1">
+                {content}
+            </Typography>
+        );
+
         return(
             <Card className={classes.indiCard} variant="outlined" ref={myRef}>
+                <CardHeader 
+                    title={cardSolutionTitle(algoData[cate][index].title)}
+                    subheader={cardSolutionSubTitle(algoData[cate][index].introduction)}
+                />
+                <Divider />
                 <CardContent>
-                    <Typography variant="h5" gutterBottom>
-                        {algoData[index].title}
-                    </Typography>
-                    <Typography className={classes.pos}>
-                        {algoData[index].introduction}
-                    </Typography>
-                    <Typography variant="body2" component="p">
-                        {algoData[index].content}
+                    <Typography variant="body1">
+                        {algoData[cate][index].content}
                     </Typography>
                 </CardContent>
             </Card>
@@ -244,7 +258,7 @@ const Solution = () => {
                         </Typography>
                     </Box>
 
-                    <Box className={classes.solutionContent}>
+                    <Box className={classes.solutionContent} p={3}>
                         <Typography variant="h4" className={classes.contentTitle}>Trainee Solution Library</Typography>
                         <Typography variant="body1" className={classes.contentSubTitle}>The Trainee Soltion library offers a collection of cloud-based solutions (Machine learning algorithms, training hardware). You can use the pre-defined configurations of the algorithms to build your personal models and integrate them to your project with ease. </Typography>
 
