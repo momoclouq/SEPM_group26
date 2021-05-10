@@ -53,7 +53,7 @@ const Con = (props) => {
   const { id, title, content, button } = props.prop;
 
   return (
-    <Grid item xs={4}>
+    <Grid item xs={12} md={4}>
       <Grid Container spacing={0}>
         <Paper className={classes.paper}>
           <Grid item xs={2}>
