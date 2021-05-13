@@ -17,10 +17,20 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         paddingTop: "20px",
-        minHeight: "100vh",
+        height: "100%",
         margin: "0",
         minWidth: "650px",
-        background: "#ECF3FF"
+    },
+    introPanel: {
+        background: "white",
+        padding: "10px 20px",
+        borderRadius: "5px",
+    },
+    introPanelTitle: {
+        color: "#890596"
+    },
+    introPanelSubTitle: {
+        fontWeight: "300",
     },
     stepImg: {
         height: "auto",
@@ -77,7 +87,7 @@ const GettingStarted = () => {
     const StepPanel = (number, instruction, imageLink) => {
         return (
             <Grid className={classes.stepCard} item key={`stepPanel${number}`}>
-                <Card variant="outlined" elevation={10}>
+                <Card variant="outlined" borderLeft={0} borderRight={0}>
                     <CardHeader 
                         title={`Step ${number}: ${instruction}`}
                         subheader="September 14, 2016"
@@ -103,11 +113,11 @@ const GettingStarted = () => {
         <React.Fragment>
             <main className={classes.main}>
                 <Container className={classes.content} maxWidth="lg">
-                    <Box className={classes.introPanel}>
-                        <Typography variant="h2">
+                    <Box className={classes.introPanel} boxShadow={3}>
+                        <Typography variant="h2" className={classes.introPanelTitle}>
                             Getting Started with Trainee
                         </Typography>
-                        <Typography variant="h5">
+                        <Typography variant="h6" className={classes.introPanelSubTitle}>
                             Learn the basic steps of creating a project and start training machine learning models now
                         </Typography>
                     </Box>

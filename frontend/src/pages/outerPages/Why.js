@@ -116,10 +116,17 @@ const Con = (props) => {
   const { id, title, content, button } = props.prop;
 
   return (
+<<<<<<< HEAD
     <Grid item lg={4} xs={6}>
       <Paper className={classes.paper}>
         <Box pt={1} pb={1}>
           <Typography variant="h5" pb={2} align={"center"}>
+=======
+    <Grid item xs={12} md={4}>
+      <Grid Container spacing={0}>
+        <Paper className={classes.paper}>
+          <Grid item xs={2}>
+>>>>>>> fa528a432ca0c1d0239920a1672a4c228c16de26
             <div className={classes.iconCon}>
               <FileCopyIcon fontSize="large" color="primary"></FileCopyIcon>
             </div>
