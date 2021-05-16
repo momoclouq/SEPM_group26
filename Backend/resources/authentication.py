@@ -32,6 +32,12 @@ class UserSignupResource(Resource):
     def post(self):
         username, email, password = self.parse_arguments()
 
+        # Check if username, email or password is empty
+        if len(username) == 0 or len(email) == 0 or len(password) == 0:
+            return {
+                "message": "Fields can not be empty"
+            }, 400
+
         # Check if user has not already registered
         if UserModel.find_user_with_email(email):
             return {
