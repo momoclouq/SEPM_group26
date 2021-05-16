@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     },
     logoLink: {
         textDecoration: "none"
-    }
+    },
 }));
 
 const Navbar = () => {
@@ -150,7 +150,9 @@ const Navbar = () => {
                     key: label,
                   }}
                 >
-                  <DrawerItem>{label}</DrawerItem>
+                  <DrawerItem>
+                    {label}
+                  </DrawerItem>
                 </Link>
               );
             });
@@ -177,7 +179,9 @@ const Navbar = () => {
                             onClose: handleDrawerClose,
                         }
                     }>
-                        <div className={classes.drawerContainer} onClick={handleDrawerClose}>{getDrawerChoices()}</div>
+                        <div 
+                            className={classes.drawerContainer} 
+                            onClick={handleDrawerClose}>{getDrawerChoices()}</div>
                     </Drawer>
 
                     {indexLink}
