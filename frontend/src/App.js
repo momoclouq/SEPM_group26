@@ -10,6 +10,7 @@ import GlobalStyle from './components/styles/global';
 import PrivateRoute from "./router/privateroute";
 import PersonalHub from "./pages/hub";
 import HomePage from "./pages/home";
+import GettingStarted from "./pages/home/GettingStarted";
 
 function App() {
   return (
@@ -27,6 +28,10 @@ function App() {
 
                 <Route path="/login">
                     <LogInPage />
+                </Route>
+
+                <Route path="/start">
+                    <GettingStarted />
                 </Route>
 
                 <Route exact path="/">

@@ -19,22 +19,30 @@ const Logo = styled.img`
 
 const Menu = styled.div`
     display: flex;
-    width: 20%;
     justify-content: space-around;
+    height: 100%;
 `;
 
 const MenuLink = styled(Link)`
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-decoration: none;
     color: #7209B7;
-    padding: 5px;
+    padding: 5px 10px;
+    height: 100%;
 `;
+
+const LogoLink = styled(Link)`
+    height: 100%;
+`
 
 const Header = () => {
     return (
         <Nav>
-            <Logo src={Icon}/>
+            <LogoLink to="/"><Logo src={Icon}/></LogoLink>
             <Menu>
+                <MenuLink to="/start">Explore</MenuLink>
                 <MenuLink to="/login">Log in</MenuLink>
                 <MenuLink to="/signup">Sign up</MenuLink>
             </Menu>

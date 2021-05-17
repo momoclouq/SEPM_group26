@@ -40,9 +40,9 @@ const RegisterButton = styled(Link)`
 const RegisterPanel = () => {
     return (
         <Wrapper> 
-            <RegisterHeader>It's easy to get started with Trainee</RegisterHeader>
-            <RegisterSubheader>Register and claim your free training tokens</RegisterSubheader>
-            <RegisterButton to="/signup">Register now</RegisterButton>
+            <RegisterHeader>Simple steps to get started with Trainee</RegisterHeader>
+            <RegisterSubheader>graphical instructions to begin model training</RegisterSubheader>
+            <RegisterButton to="/signup">Start now</RegisterButton>
         </Wrapper>
     )
 }

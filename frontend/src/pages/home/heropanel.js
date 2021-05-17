@@ -42,7 +42,7 @@ const HeroPanel = () => {
         <Wrapper> 
             <HeroHeader>Cloud-based ML training</HeroHeader>
             <HeroSubheader>Fast, cheap and friendly</HeroSubheader>
-            <HeroButton to="/signup">Explore</HeroButton>
+            <HeroButton to="/signup">Register now</HeroButton>
         </Wrapper>
     )
 }
