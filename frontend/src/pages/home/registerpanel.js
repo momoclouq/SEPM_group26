@@ -50,7 +50,7 @@ const RegisterPanel = () => {
         <Wrapper> 
             <RegisterHeader>Simple steps to get started with Trainee</RegisterHeader>
             <RegisterSubheader>graphical instructions to begin model training</RegisterSubheader>
-            <RegisterButton to="/signup">Start now</RegisterButton>
+            <RegisterButton to="/start">Learn now</RegisterButton>
         </Wrapper>
     )
 }

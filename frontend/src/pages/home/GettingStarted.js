@@ -10,7 +10,14 @@ import CardHeader from '@material-ui/core/CardHeader';
 import Header from "./header";
 import Footer from "./footer";
 
-import step from "./../../media/medium_pack.png";
+//getting started pictures
+import step1 from "./../../media/steps/step_signup.png";
+import step2 from "./../../media/steps/step_dashboard.png";
+import step3 from "./../../media/steps/step_create1.png";
+import step4 from "./../../media/steps/step_create2.png";
+import step5 from "./../../media/steps/step_solution1.png";
+import step6 from "./../../media/steps/step_solution2.png";
+import step7 from "./../../media/steps/step_solution3.png";
 
 const useStyles = makeStyles((theme) => ({
     main: {
@@ -22,9 +29,23 @@ const useStyles = makeStyles((theme) => ({
         minWidth: "650px",
         background: "#ECF3FF"
     },
+    introPanel: {
+        background: "linear-gradient(to right bottom, #3A0CA3, #7209B7)",
+        color: "white",
+        padding: "20px 20px",
+        borderRadius: "10px"
+    },
+    introSubtitle: {
+        fontWeight: "300"
+    },
     stepImg: {
-        height: "auto",
-        width: "100%"
+        maxWidth: "100%",
+        height: "auto"
+    },
+    stepImgWrapper: {
+        heigth: "80vh",
+        width: "100%",
+        borderTop: "0.25px solid grey"
     },
     stepCard: {
         margin: "20px 0",
@@ -47,47 +68,73 @@ const stepData = [
     {
         title: 1,
         content: "Sign up/ Log into the system",
-        imageLink: step
+        explanation: "All services provided require a Trainee account. Your email is only used for identification.",
+        imageLink: step1,
+        hoverTitle: "log in page"
     },
     {
         title: 2,
-        content: "Sign up/ Log into the system",
-        imageLink: step
+        content: "Access \"Create projects\" menu on the left drawer",
+        explanation: "After logging in, the dashboard will appear with access to the Trainee services as well as all projects listed",
+        imageLink: step2,
+        hoverTitle: "dashboard"
     },
     {
         title: 3,
-        content: "Sign up/ Log into the system",
-        imageLink: step
+        content: "Provide needed information",
+        explanation: "Fill in the project name, description and choose the type of models: Classication/ Regression",
+        imageLink: step3,
+        hoverTitle: "types of algorithm"
     },
     {
         title: 4,
-        content: "Sign up/ Log into the system",
-        imageLink: step
+        content: "Upload your dataset",
+        explanation: "Please provide your dataset in the .csv file type for compatibility",
+        imageLink: step4,
+        hoverTitle: "upload file page"
     },
     {
         title: 5,
-        content: "Sign up/ Log into the system",
-        imageLink: step
+        content: "Create your solution based on the project data",
+        explanation: "Move to dashboard main page, click on the newly created project and click \"CREATE A SOLUTION\"",
+        imageLink: step5,
+        hoverTitle: "Create a solution button"
+    },
+    {
+        title: 6,
+        content: "Provide adequate criteria for your solution creation and start the process",
+        explanation: "Adjusting the arguments will greatly affect the outcome as well as the time needed for model training",
+        imageLink: step6,
+        hoverTitle: "Various fields for adjusting the arguments"
+    },
+    {
+        title: 7,
+        content: "Monitor the creation process",
+        explanation: "You can keep track of the model training process as well as stop/resume the process at any time",
+        imageLink: step7,
+        hoverTitle: "Monitor process panel"
     },
 ]
 
 const GettingStarted = () => {
     const classes = useStyles();
 
-    const StepPanel = (number, instruction, imageLink) => {
+    const StepPanel = (number, instruction, explanation, imageLink, hoverTitle) => {
         return (
             <Grid className={classes.stepCard} item key={`stepPanel${number}`}>
-                <Card variant="outlined" elevation={10}>
+                <Card variant="outlined" elevation={10} className={classes.wrapperCard}>
                     <CardHeader 
                         title={`Step ${number}: ${instruction}`}
-                        subheader="September 14, 2016"
+                        subheader={explanation}
                     />
-                    <CardMedia
-                        component="img"
-                        className={classes.stepImg}
-                        image={imageLink}
-                        title="Paella dish"
-                    />
+                    <Box className={classes.stepImgWrapper}>
+                        <CardMedia
+                            component="img"
+                            className={classes.stepImg}
+                            image={imageLink}
+                            title={hoverTitle}
+                        />
+                    </Box>
                 </Card>
             </Grid>
         );
@@ -95,7 +142,7 @@ const GettingStarted = () => {
 
     const allStepPanel = () => {
         return stepData.map((indiStep, index) => {
-            return StepPanel(index + 1, indiStep.content, indiStep.imageLink);
+            return StepPanel(index + 1, indiStep.content, indiStep.explanation, indiStep.imageLink, indiStep.hoverTitle);
         }, []);
     }
     
@@ -108,7 +155,7 @@ const GettingStarted = () => {
                         <Typography variant="h2">
                             Getting Started with Trainee
                         </Typography>
-                        <Typography variant="h5">
+                        <Typography className={classes.introSubtitle} variant="h5">
                             Learn the basic steps of creating a project and start training machine learning models now
                         </Typography>
                     </Box>
