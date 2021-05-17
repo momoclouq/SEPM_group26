@@ -10,6 +10,9 @@ const Nav = styled.nav`
     align-items: center;
     padding: 10px;
     padding-left: 20px;
+    -webkit-box-shadow: 0px 0px 9px 3px rgba(41,41,41,.25);
+    -moz-box-shadow: 0px 0px 9px 3px rgba(41,41,41,.25);
+    box-shadow: 0px 0px 9px 3px rgba(41,41,41,.25);
 `;
 
 const Logo = styled.img`

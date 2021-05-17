@@ -7,7 +7,8 @@ const PanelGrid = styled.section`
     height: 35rem;
     padding: 2rem;
     display: grid;
-    grid-template: 20% 80% / repeat(3, 1fr);
+    height: fit-content;
+    grid-template: 15% / repeat(3, 1fr);
 `;
 
 const PanelTitle = styled.h1`
@@ -16,7 +17,10 @@ const PanelTitle = styled.h1`
     font-weight: normal;
     font-size: 2rem;
     text-transform: uppercase;
-    width: 40%;
+    width: 70%;
+    @media (max-width: 768px) {
+        width: 80%;
+    }
     color: #7209B7;
     grid-area: 1 / 1 / span 1 / span 3;
 `;
@@ -25,17 +29,23 @@ const PanelCards = styled.div`
     grid-area: 2 / 1 / span 1 / span 3;
     display: flex;
     justify-content: space-between;
-    margin: 2rem 0;
+    height: fit-content;
+    margin-top: 40px;
+    @media (max-width: 768px) {
+        flex-direction: column;
+        margin-top: 0;
+    }
 `;
 
 const PanelCard = styled.div`
     text-align: center;
     padding: 30px;
+    height: fit-content;
 `;
 
 const PanelCardTitle = styled.h3`
     margin-bottom: 20px;
-    color: #c4c4c4;
+    color: black;
 `;
 
 const PanelCardText = styled.p`
@@ -46,28 +56,28 @@ const PanelCardText = styled.p`
 const FeaturePanel = () => {
     return (
         <PanelGrid>
-            <PanelTitle>What you can do with Trainee</PanelTitle>
+            <PanelTitle>Start your project with the complete Machine learning package</PanelTitle>
             <PanelCards>    
                 <PanelCard>
-                    <MdNoteAdd fontSize="12rem" color="#c4c4c4"/>
+                    <MdNoteAdd fontSize="12rem" color="#4554de"/>
                     <PanelCardTitle>Notebooks</PanelCardTitle>
                     <PanelCardText>On-demand cloud-powered Jupyter notebook</PanelCardText>
                 </PanelCard>
 
                 <PanelCard>
-                    <MdCloudQueue fontSize="12rem" color="#c4c4c4"/>
+                    <MdCloudQueue fontSize="12rem" color="#65aedb"/>
                     <PanelCardTitle>Cloud ML</PanelCardTitle>
                     <PanelCardText>Training your Machine Learning model on the cloud</PanelCardText>
                 </PanelCard>
 
                 <PanelCard>
-                    <MdFileUpload fontSize="12rem" color="#c4c4c4"/>
+                    <MdFileUpload fontSize="12rem" color="#5ad5ed"/>
                     <PanelCardTitle>Deployment</PanelCardTitle>
                     <PanelCardText>On-click deployment. Train once - Use anywhere</PanelCardText>
                 </PanelCard>
             </PanelCards>
         </PanelGrid>
-    )
+    );
 };
 
 export default FeaturePanel;
