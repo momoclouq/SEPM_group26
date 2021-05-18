@@ -1,179 +1,184 @@
-import { InputAdornment, makeStyles, TextField } from "@material-ui/core";
+import { InputAdornment, makeStyles, TextField, Box } from "@material-ui/core";
 import { AccountCircle, Email, Lock } from "@material-ui/icons";
 import React from "react";
-import Background from "../../components/background";
+import StyleTitle from "./components/title";
 import { InvertedButton } from "../../components/button";
 import { MarginTopSmall, MarginTopLarge } from "../../components/position";
-import MediumHeading from "../../components/typography/mediumheading";
+
 import AuthenticationPanel from "./panel";
-import Alert from "@material-ui/lab/Alert"
+import Alert from "@material-ui/lab/Alert";
 import { signUp } from "../../api";
 import { Redirect } from "react-router-dom";
 import AuthMessage from "./signupmessage";
 
 const useStyles = makeStyles({
-    textfield: {
-        width: "80%"
-    },
-    alert: {
-        width: "80%",
-        margin: "0 auto"
-    }
+  textfield: {
+    width: "80%",
+  },
+  alert: {
+    width: "80%",
+    margin: "0 auto",
+  },
+  background: {
+    width: "100%",
+    minHeight: "100vh",
+    padding: "8rem",
+    background: "linear-gradient(to right,#ff00cc,#333399)",
+  },
 });
 
 function SignUpPage(props) {
-    const classes = useStyles();
+  const classes = useStyles();
 
-    //Internal states
-    const [username, setUsername] = React.useState("");
-    const [email, setEmail] = React.useState("");
-    const [password, setPassword] = React.useState("");
-    const [confirmPassword, setConfirmPassword] = React.useState("");
-    const [errorMessage, setErrorMessage] = React.useState(null);
-    const [signUpSuccessful, setSignUpSuccessful] = React.useState(false);
-    
-    //On input
-    function onNameChanged(event) {
-        setUsername(event.target.value);
+  //Internal states
+  const [username, setUsername] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [confirmPassword, setConfirmPassword] = React.useState("");
+  const [errorMessage, setErrorMessage] = React.useState(null);
+  const [signUpSuccessful, setSignUpSuccessful] = React.useState(false);
+
+  //On input
+  function onNameChanged(event) {
+    setUsername(event.target.value);
+  }
+
+  function onEmailChanged(event) {
+    setEmail(event.target.value);
+  }
+
+  function onPasswordChanged(event) {
+    setPassword(event.target.value);
+  }
+
+  function onConfirmPasswordChanged(event) {
+    setConfirmPassword(event.target.value);
+  }
+
+  function onSignUpButtonClicked() {
+    //Check if password and confirm password are the same
+    if (password !== confirmPassword) {
+      setErrorMessage("Password and confirm password do not match");
+    } else {
+      signUp(username, email, password)
+        .then((response) => {
+          //Successfull -> Redirect
+          setSignUpSuccessful(true);
+        })
+        .catch((error) => {
+          //Get error message
+          const { response } = error;
+          const { data } = response;
+          const { message } = data;
+
+          //Set error message
+          setErrorMessage(message);
+        });
     }
+  }
 
-    function onEmailChanged(event) {
-        setEmail(event.target.value);
-    }
+  return (
+    <React.Fragment>
+      {signUpSuccessful ? (
+        <Redirect to="/login" />
+      ) : (
+        <div className={classes.background}>
+          <AuthenticationPanel>
+            <StyleTitle fontSize="40px">Sign up to Trainee</StyleTitle>
 
-    function onPasswordChanged(event) {
-        setPassword(event.target.value);
-    }
+            <MarginTopLarge>
+              {errorMessage ? (
+                <Alert severity="error" classes={{ root: classes.alert }}>
+                  {errorMessage}
+                </Alert>
+              ) : null}
+            </MarginTopLarge>
 
-    function onConfirmPasswordChanged(event) {
-        setConfirmPassword(event.target.value);
-    }
+            <MarginTopSmall>
+              <TextField
+                placeholder="Username"
+                label="Username"
+                onChange={onNameChanged}
+                classes={{ root: classes.textfield }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <AccountCircle />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </MarginTopSmall>
 
-    function onSignUpButtonClicked() {
-        //Check if password and confirm password are the same
-        if (password !== confirmPassword) {
-            setErrorMessage("Password and confirm password do not match")
-        } else {
-            signUp(username, email, password)
-                .then(response => {
-                    //Successfull -> Redirect
-                    setSignUpSuccessful(true);
-                })
-                .catch(error => {
-                    //Get error message
-                    const { response } = error;
-                    const { data } = response;
-                    const { message } = data;
+            <MarginTopSmall>
+              <TextField
+                placeholder="Email"
+                label="Email"
+                type="email"
+                onChange={onEmailChanged}
+                classes={{ root: classes.textfield }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Email />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </MarginTopSmall>
 
-                    //Set error message
-                    setErrorMessage(message);
-                });
-        }
-    }
+            <MarginTopSmall>
+              <TextField
+                placeholder="Password"
+                label="Password"
+                type="password"
+                onChange={onPasswordChanged}
+                classes={{ root: classes.textfield }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Lock />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </MarginTopSmall>
 
-    return (
-        <React.Fragment>
-        {
-            signUpSuccessful ? 
-            <Redirect to="/login"/> :
-            (
-                <Background dark>
-                    <AuthenticationPanel>
-                        <MediumHeading>Sign up to Trainee</MediumHeading>
+            <MarginTopSmall>
+              <TextField
+                placeholder="Re-enter password"
+                label="Re-enter password"
+                type="password"
+                onChange={onConfirmPasswordChanged}
+                classes={{ root: classes.textfield }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Lock />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </MarginTopSmall>
 
-                        <MarginTopLarge>
-                            { 
-                                errorMessage ? 
-                                <Alert severity="error" classes={{ root: classes.alert }}>
-                                    { errorMessage }
-                                </Alert> : null 
-                            }
-                        </MarginTopLarge>
+            <MarginTopSmall>
+              <AuthMessage
+                message="Already have an account ? "
+                linktext="Log in"
+                linkto="/login"
+              />
+            </MarginTopSmall>
 
-                        <MarginTopSmall>
-                            <TextField 
-                                placeholder="Username"
-                                label="Username"
-                                onChange={onNameChanged}
-                                classes={{ root: classes.textfield }}
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <AccountCircle />
-                                        </InputAdornment>
-                                    )
-                                }}/>
-                        </MarginTopSmall>
-                        
-                        <MarginTopSmall>
-                            <TextField 
-                                placeholder="Email"
-                                label="Email"
-                                type="email"
-                                onChange={onEmailChanged}
-                                classes={{ root: classes.textfield}}
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <Email />
-                                        </InputAdornment>
-                                    )
-                                }}/>
-                        </MarginTopSmall>
-
-                        <MarginTopSmall>
-                            <TextField 
-                                placeholder="Password"
-                                label="Password"
-                                type="password"
-                                onChange={onPasswordChanged}
-                                classes={{ root: classes.textfield}}
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <Lock />
-                                        </InputAdornment>
-                                    )
-                                }}/>
-                        </MarginTopSmall>
-
-                        <MarginTopSmall>
-                            <TextField 
-                                placeholder="Re-enter password"
-                                label="Re-enter password"
-                                type="password"
-                                onChange={onConfirmPasswordChanged}
-                                classes={{ root: classes.textfield}}
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <Lock />
-                                        </InputAdornment>
-                                    )
-                                }}/>
-                        </MarginTopSmall>
-
-                        <MarginTopSmall>
-                            <AuthMessage 
-                                message="Already have an account ? "
-                                linktext="Log in"
-                                linkto="/login"/>
-                        </MarginTopSmall>
-
-                        <MarginTopLarge>
-                            <InvertedButton 
-                                width="80%"
-                                onClick={onSignUpButtonClicked}>
-                                Sign up
-                            </InvertedButton>
-                        </MarginTopLarge>
-                    </AuthenticationPanel>
-                </Background>
-            )
-        }
-        </React.Fragment>
-    )
+            <Box mt={4} mb={4}>
+              <InvertedButton width="80%" onClick={onSignUpButtonClicked}>
+                Sign up
+              </InvertedButton>
+            </Box>
+          </AuthenticationPanel>
+        </div>
+      )}
+    </React.Fragment>
+  );
 }
-
 
 export default SignUpPage;
